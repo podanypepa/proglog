@@ -22,6 +22,7 @@ func NewLog() *Log {
 	return &Log{}
 }
 
+// Append record to Log
 func (l *Log) Append(r Record) (offset uint64, err error) {
 	l.m.Lock()
 	defer l.m.Unlock()
@@ -32,6 +33,7 @@ func (l *Log) Append(r Record) (offset uint64, err error) {
 	return offset, nil
 }
 
+// Read record from Log
 func (l *Log) Read(offset uint64) (r Record, err error) {
 	l.m.Lock()
 	defer l.m.Unlock()
